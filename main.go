@@ -56,8 +56,10 @@ func main() {
 
   if len(tag)>0 {
     imageTag = tag
-  } else {
+  } else if len(hash)>7 {
     imageTag = branch + "-" + hash[:7]
+  } else {
+    imageTag = branch
   }
   imageTag = FixBuildTag(imageTag)
   fmt.Println(imageTag)
